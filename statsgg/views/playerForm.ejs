@@ -1,0 +1,118 @@
+<%- include("header.ejs", {title: "Create" , dataType:"player"}) %>
+    <link rel="stylesheet" href="/stylesheets/player.css" />
+
+    <main>
+        <h1 id="main-page-header">Add a New Player</h1>
+        <hr>
+
+        <% if(locals.errors) { %>
+            <div class="alert alert-danger">
+                <ul class="col-6">
+                    <li>
+                        <%= errors %>
+                    </li>
+                </ul>
+            </div>
+            <% } %>
+
+                <form method="POST" action="/players/update/<%- player._id %>" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<%- player._id %>">
+
+                    <div class="col-4">
+                        <label for="inGameName" class="form-label"><strong>Player In-Game Name</strong></label>
+                        <input type="text" class="form-control" name="inGameName" id="inGameName"
+                            value="<%- player.inGameName %>" required max="30">
+                    </div>
+
+                    <div class="col-4">
+                        <label for="firstName" class="form-label"><strong>Player First Name</strong></label>
+                        <input type="text" class="form-control" name="firstName" id="firstName"
+                            value="<%- player.firstName %>" required max="30">
+                    </div>
+
+                    <div class="col-4">
+                        <label for="lastName" class="form-label"><strong>Player Last Name</strong></label>
+                        <input type="text" class="form-control" name="lastName" id="lastName"
+                            value="<%- player.lastName %>" required max="30">
+                    </div>
+
+
+                    <div class="col-4">
+                        <label for="game" class="form-label"><strong>Game</strong></label>
+                        <select name="game" id="game" required>
+                            <option value="" <%- (player.game.length <=0) ? "selected" : "" %> disabled hidden>
+                                Choose a Game
+                            </option>
+
+                            <% for (let curGame of games) { %>
+                                <option value="<%- curGame._id %>" <%- player.game && (player.game._id==curGame._id)
+                                    ? "selected" : "" %> > <%- curGame.title %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+
+                    <div class="col-4">
+                        <label for="team" class="form-label"><strong>Team</strong></label>
+                        <select name="team" id="team" required>
+                            <% console.log("player: " + player); %>
+            <option value="" <%- (player.team.length <= 0) ? " selected" : "" %> disabled hidden>
+                                Choose a Team
+                                </option>
+
+                                <% for (let curTeam of teams) { %>
+                                    <option value="<%- curTeam._id %>" <%- (player.team.length> 0) &&
+                                        (String(player.team[0]._id) == String(curTeam._id)) ? "selected" : "" %> > <%-
+                                            curTeam.teamName %>
+                                    </option>
+                                    <% } %>
+                        </select>
+                    </div>
+
+                    <div class="col-4">
+                        <label for="followedUsers" class="form-label"><strong>Followed Users</strong></label>
+                        <br>
+                        <select name="followedUsers" id="followedUsers" multiple>
+                            <option value="" <%- (!player.followedUsers) ? "selected" : "" %> disabled hidden>
+                                Select Followed Users
+                            </option>
+
+                            <% for (let curUser of users) { %>
+                                <option value="<%- curUser._id %>" <%- player.followedUsers &&
+                                    player.userIsFollowing(curUser._id) ? "selected" : "" %> > <%= curUser.userName %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+
+                    <div class="col-4">
+                        <label for="KDA" class="form-label"><strong>Player KDA</strong></label>
+                        <input type="number" class="form-control" name="KDA" id="KDA" value="<%- player.KDA %>"
+                            required>
+                    </div>
+
+                    <div class="col-4">
+                        <label for="earnings" class="form-label"><strong>Player Earnings</strong></label>
+                        <input type="number" class="form-control" name="earnings" id="earnings"
+                            value="<%- player.earnings %>" required>
+                    </div>
+
+                    <div class="col-4">
+                        <label for="numGamesPlayed" class="form-label"><strong>Player Number of Games
+                                Played</strong></label>
+                        <input type="number" class="form-control" name="numGamesPlayed" id="numGamesPlayed"
+                            value="<%- player.numGamesPlayed %>" required>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="image"><strong>Upload Player Image</strong></label>
+                            <input type="file" id="image" name="image" accept="image/*">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" id="submit-form" type="submit">Submit</button>
+                </form>
+
+                <a class="btn btn-secondary" id="backButton" href="/players">Back to Players</a>
+    </main>

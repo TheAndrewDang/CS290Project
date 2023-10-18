@@ -1,0 +1,79 @@
+<%- include("header.ejs", {title: teamName, dataType: "teams"}) %> 
+<link rel="stylesheet" href="/css/team.css"/>
+
+<main>
+    <div class="container">
+        
+    </div>
+    <div class="container">            
+            <div class="">
+        <img  src="/assets/teamImages/teamBanners/<%- teamName %>.jpg " class="img-fluid" alt="Responsize image">
+    </div>
+    <div class="container"> 
+    <div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 style="padding-top: 3%;"> <%- teamName %> eSports Games </h3>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                    <div class="col-sm">
+                        <div>
+                                <a href="/games/id/<%- game[0]._id %>">
+                                <img style="padding-left: 2vh;" src="/assets/gameImages/League of Legends.jpg">
+                                </a>  
+                </div>
+                </div>
+                <div class="col-sm">
+                    <div>
+                            <a href="/games/id/<%- game[1]._id %>">
+                            <img style="padding-left: 2vh;" src="/assets/gameImages/Valorant.jpg">
+                            </a>  
+            </div>
+        </div>
+        <div class="col-sm">
+            <div>
+                    <a href="/games/id/<%- game[2]._id %>">
+                    <img style="padding: 2vh; "src="/assets/gameImages/Apex.jpg">
+                    </a>  
+    </div>
+        </div>
+        <div class="col-sm">
+            <div>
+                    <a href="/games/id/<%- game[3]._id %>">
+                    <img style="padding: 2vh; "src="/assets/gameImages/CSGO.jpg">
+                    </a>  
+    </div>
+        </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            
+            <div class="col-md-4" style="background-color: black;">
+                <div style="text-align: center;">
+                <div class="sideInfo">
+                <h5><b><%- teamName %></b> est. <%- year_date %> </h5>
+
+            </div>
+            <div class="moreInfo">
+                <h5>ACTIVE: <b><%- currentlyActive %> </b></h5>
+                <hr>
+                <h5>CHAMPIONSHIPS WON: <b><%- championshipWins %></b></h5>
+                <hr>
+                <h5><a href="/players/">PLAYERS</a></h5>
+            </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <a href="/teams/delete/<%-_id%>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Delete</a>
+    </div>
+</main>
+
+<%- include('footer') %> 

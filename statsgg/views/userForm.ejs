@@ -1,0 +1,44 @@
+<%- include("header.ejs",  {title:title, dataType:"user"}) %>
+<main>
+    <form method="POST"  enctype="multipart/form-data">
+        <!--Hidden input used to update mongoDB id--> 
+        <input type="hidden" name="id" value="<%-user._id%>">
+
+        <div class="container">
+            <h1 class="text-center"><b><%-title%></b></h1>
+        </div>
+
+        <div class="container my-2">
+            <label for="userName" class="form-label">User Name <em>(Required)</em></label>
+            <input type="text" class="form-control" name="userName" id="userName" value="<%- user.userName %>" required>
+        </div>
+
+        <div class="container my-2">
+            <label for="realName" class="form-label">Real Name <em>(Required)</em></label>
+            <input type="number" class="form-control" name="realName" id="realName" value="<%- user.realName %>" required>
+        </div>
+
+        <div class="container my-2">
+            <label for="country" class="form-label">Country <em>(Required)</em></label>
+            <input type="text" class="form-control" name="country" id="country" value="<%- user.country %>" required>
+        </div>
+
+        <div class="container my-2">
+            <label for="description" class="form-label">A little about yourself <em>(Required)</em></label>
+            <input type="text" class="form-control" name="description" id="description" value="<%- user.description %>" required>
+        </div>
+
+        <div class="container my-2">
+            <label for="dateJoined" class="form-label">Date Joined <em>(Required)</em> </label>
+            <input type="date" class="form-control" name="dateJoined" id="dateJoined" value="<%- user.dateJoined%>">
+        </div>
+
+        <div class="container my-3">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg active" aria-pressed="true">Submit</button>
+            </div>
+        </div>
+    </form>
+</main>
+
+<%- include("footer.ejs") %>

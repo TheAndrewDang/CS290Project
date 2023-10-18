@@ -1,0 +1,75 @@
+<%- include("header.ejs",  {title:title, dataType:"game"}) %>
+<main>
+    <form method="POST" action="/games/update/<%-game._id%>" enctype="multipart/form-data">
+        <!--Hidden input used to update mongoDB id--> 
+        <input type="hidden" name="id" value="<%-game._id%>">
+        <input type="hidden" name="player" value="<%-players%>">
+
+        <div class="container">
+            <h1 class="text-center"><b><%-title%></b></h1>
+        </div>
+
+        <div class="container my-2">
+            <label for="title" class="form-label">Game Title <em>(Required)</em></label>
+            <input type="text" class="form-control" name="title" id="title" value="<%- game.title %>" required>
+        </div>
+
+        <div class="container my-2">
+            <label for="numFollowers" class="form-label">Number of Followers <em>(Required)</em></label>
+            <input type="number" class="form-control" name="numFollowers" id="numFollowers" value="<%- game.numFollowers %>" required>
+        </div>
+
+        <div class="container my-2">
+            <label for="genre" class="form-label">Genre <em>(Required)</em></label>
+            <input type="text" class="form-control" name="genre" id="genre" value="<%- game.genre %>" required>
+        </div>
+
+        <div class="container my-2">
+            <label for="releaseDate" class="form-label">Release Date</label>
+            <input type="date" class="form-control" name="releaseDate" id="releaseDate" value="<%- game.correct_date%>">
+        </div>
+
+        <div class="container my-2">
+            <div class="form-group">
+                <label for="platforms">Select One or Multiple Platforms with Control-Click <em>(Min of 1)</em></label>
+                <select class="form-select" id="platforms" name="platforms" min="1" multiple>
+                    <% for (let p of allPlatforms) { %>
+                        <% console.log("EJS Platform", p) %>
+                        <option value="<%-p%>" <%- game.platforms && game.findPlatforms(p) ?  "selected" : "" %>>
+                            <%=p%>
+                        </option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+
+        <div class="container my-2">
+            <div class="form-group">
+                <label for="teams">Select One or Multiple Teams with Control-Click</label>
+                <select class="form-select" id="teams" name="teams" min="1" multiple>
+                    <% for(let t of teams) { %>
+                        <option value="<%- t._id%>"<%- game.team  && game.findTeams(t._id) ? "selected" : "" %>>
+                            <%= t.teamName %>
+                        </option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+
+        <div class="container my-2">
+            <div class="form-group">
+                <label for="image">Upload your Image</label>
+                <input type="file" id="image" name="image" accept="image/*" multiple>
+            </div>
+        </div>
+
+        <div class="container my-3">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg active" aria-pressed="true">Submit</button>
+            </div>
+        </div>
+    </form>
+
+</main>
+
+<%- include("footer.ejs") %>

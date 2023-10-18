@@ -1,0 +1,17 @@
+<%- include('header', {title:"StatsGG"}) -%> 
+<main>
+    <div class="container">
+        <h1 class="text-center">ERROR
+            <% if(message.length > 9){ 
+                var code = 500; 
+                
+            }else{ 
+                var code = 404; 
+            } %>
+        <%= code %></h1>
+        <div class="card card-body">
+            <pre><%= error.stack %></pre>
+        </div>
+    </div>
+</main>
+<%- include('footer') -%> 

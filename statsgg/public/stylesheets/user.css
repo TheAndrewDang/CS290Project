@@ -1,0 +1,59 @@
+.profileListEnt {
+    background-color: rgb(225, 225, 225);
+    margin: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profilePictureList {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.userListData {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.delPaddingBottom{
+    margin: 0px;
+}
+
+#listNameRow {
+    padding-top: 5%;
+}
+
+#profileMain {
+    padding: 2%;
+}
+
+#profileBanner {
+    padding: 3%;
+    background: rgb(225, 225, 225);
+}
+
+#favPlayerImg {
+    width: 50%;
+    border: solid;
+    border-color: black;
+}
+
+.gamesBanner {
+    margin-top: 1.5%;
+    object-fit: cover;
+    object-position: 0% 15%;
+    max-height: 100%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 10vw;
+    object-fit: cover;
+}

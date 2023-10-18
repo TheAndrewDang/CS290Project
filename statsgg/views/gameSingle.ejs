@@ -1,0 +1,74 @@
+<%- include("header.ejs",  {title:gameSingle.title, dataType:"game"}) %>
+
+<main>
+    <div class="container"> 
+    <h1 class="text-center"><b><%- gameSingle.title %></b></h1>
+    </div>
+
+    <div class="container">
+        <img src="/assets/gameImages/<%-gameSingle.img2%>" class="img-fluid" width="1920" height="1080">
+    </div>
+
+ 
+
+    <div class="table-responsive">
+    <table class ="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Release Date</th>
+                <th scope="col">Number of followers</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Platforms</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row"><%-gameSingle.clean_date%></th>
+                <th scope="row"><%-gameSingle.numFollowers%></th>
+                <th scope="row"><%-gameSingle.genre%></th>
+                <th scope="row"><%-gameSingle.platforms%></th>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+
+    <div class="container my-5">
+        <h2 class="text-center">All teams </h2>
+        <div class="row">
+            <% for (let teams of gameSingle.team) { %>
+                <div class="col-lg-3 text-center"><%-teams.teamName%>
+                    <a href="/teams/id/<%-teams._id%>">
+                    <img src="/assets/teamImages/<%-teams.teamName%>.jpg" class="img-fluid">
+                    </a>
+                </div>
+        <% } %>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="text-center my-3">Top Players</h2>
+        <div class="row">
+            <% for (let player of gameSingle.player) { %>
+                <% if(String(gameSingle._id) === String(player.game[0])) { %>
+                <div class="col-sm text-center"><%-player.getFullName%>
+                <a href="/players/id/<%-player.id%>">
+                <img src="/assets/player_portraits/lol_teamLiquid_<%- player.inGameName %>_portrait.png" class="img-fluid">
+                </a>
+                <% } %>
+            </div>
+        <% } %>
+        </div>
+    </div>
+
+    <div class="container my-3">
+        <div class="text-center">
+            <a href="/games/update/<%-gameSingle._id%>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Update <%=gameSingle.title%></a>
+            <a href="/games/delete/<%-gameSingle._id%>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Delete</a>
+        </div>
+    </div>
+
+
+</main>
+
+<%- include("footer.ejs") %>

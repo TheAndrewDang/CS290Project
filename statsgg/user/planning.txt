@@ -1,0 +1,21 @@
+user
+
+
+avatar
+ign
+real name
+region
+
+platform
+
+profile description/info
+
+games played
+
+fav team
+fav game
+fav team
+
+followed games
+followed teams
+followed players

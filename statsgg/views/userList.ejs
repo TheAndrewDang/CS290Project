@@ -1,0 +1,41 @@
+<%- include('header', {title:"UserList", dataType:"user" }) %> 
+<link rel="stylesheet" href="/stylesheets/user.css"/>
+    <main class="shadow-lg">
+        <div class="row">
+            <div class="text-center">
+                <h1><b>User Profiles</b></h1>
+            </div>
+        </div>
+        <ul>
+            <% for (let user of userList) { %>
+                <li>
+                    <div class="row profileListEnt">
+                        <div class="col-md-3 d-flex align-items-center justify-content-center">
+                            <a href="<%- user.url %>"><img class="img-fluid profilePictureList" src="/assets/profilePictures/<%-user.userName%>.png" alt="<%-user.userName%> Profile Image"></a>
+                        </div>
+
+                        <div class="col-md-auto userListData">
+                            <div class="row" id="listNameRow">
+                                <a href="<%- user.url %>"><h1><b><%- user.userName %></b></h1></a>
+                            </div>
+                            <div class="row">
+                                <h3 class="delPaddingBottom"><%- user.realName %></h3>
+                            </div>
+                            <div class="row">
+                                <p class="delPaddingBottom"><%- user.country %></p>
+                            </div>
+                            <div class="row">
+                                <p class="delPaddingBottom">User ID: <%- user.id %></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+
+        <div class="container my-3">
+            <div class="text-center">
+                <a href="/users/create/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create a User</a>            </div>
+        </div>
+    </main>
+<%- include('footer') -%> 

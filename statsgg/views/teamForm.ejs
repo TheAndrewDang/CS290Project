@@ -1,0 +1,47 @@
+<%- include("header.ejs",  {title:title, dataType:"game"}) %>
+<main>
+    <form method="POST" enctype="multipart/form-data">
+        <!--Hidden input used to update mongoDB id--> 
+        <input type="hidden" name="id" value="<%-teams._id%>">
+
+        <div class="container">
+            <h1 class="text-center"><b><%-title%></b></h1>
+        </div>
+
+        <div class="container my-2">
+            <label for="teamName" class="form-label">TEAM TITLE <em>(Required)</em></label>
+            <input type="text" class="form-control" name="title" id="title" value="<%- teams.teamName %>" required>
+        </div>
+
+        <div class="container my-2">
+            <label for="numFollowers" class="form-label">CREATED <em>(Required)</em></label>
+            <input type="date" class="form-control" name="created" id="created" value="<%- teams.created %>" required>
+        </div>
+
+        <div class="container my-2">
+            <label for="championshipWins" class="form-label">CHAMPIONSHIP WINS <em>(Required)</em></label>
+            <input type="number" class="form-control" name="championshipWins" id="championshipWins" value="<%- teams.championshipWins %>" required>
+        </div>
+
+        <div class="container my-2">
+            <label for="active" class="form-label">ACTIVE</label>
+            <input type="boolean" class="form-control" name="active" id="active" value="<%- teams.active%>">
+        </div>
+
+        <div class="container my-2">
+            <label for="totalPlayers" class="form-label">TOTAL PLAYERS</label>
+            <input type="number" class="form-control" name="totalPlayers" id="totalPlayers" value="<%- teams.totalPlayers%>">
+        </div>
+
+        <% console.log(teams); %> 
+
+        <div class="container my-3">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg active" aria-pressed="true">Submit</button>
+            </div>
+        </div>
+    </form>
+
+</main>
+
+<%- include("footer.ejs") %>

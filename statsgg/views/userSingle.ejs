@@ -1,0 +1,80 @@
+<%- include('header', {title:"User Single", dataType:"user"}) %> 
+<link rel="stylesheet" href="/stylesheets/user.css"/>
+
+<main class="shadow-lg" id="profileMain">
+    <div class="container">
+        <div class="row" id="profileBanner">
+            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                <img id="profileImg" class="img-fluid" src="/assets/profilePictures/<%-user.userName%>.png" alt="<%-user.userName%> Profile Image">
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <h1 style="font-size: 500%;"><b style="color:red;"><%= user.userName %></b></h1> 
+                </div>
+                <div class="row"><h3><%= user.realName %></h3></div>
+                <div class="row"><h3><%= user.country %></h3></div>
+                <div class="row"><h5>Member since <%= user.clean_date %></h5></div>
+            </div>
+            <div class="col-md-3 allign-items-center justify-content-center">
+                <div class="text-center">
+                    <a href="/users/delete/<%-user._id%>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Delete</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="row"><h2 style="padding-top:5%;">About</h2></div>
+                    <div class="row"><p><%= user.description %></p></div>
+                </div>
+                <div class="row">
+                    <div class="row"><h2 style="padding-top:5%;">Games Played</h2></div>
+                    <div class="card mb-3">
+                        <a href="/games/id/<%- user.gamesPlay[0]._id %>"><img src="/assets/gameImages/<%- user.gamesPlay[0].title %>.jpg" class="card-img-top gamesBanner" alt="<%- user.gamesPlay[0].title %> banner"></a>                        
+                        <div class="card-body">
+                          <h5 class="card-title" style="margin: 0;"><%- user.gamesPlay[0].title %></h5>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <a href="/games/id/<%- user.gamesPlay[1]._id %>"><img src="/assets/gameImages/<%- user.gamesPlay[1].title %>.jpg" class="card-img-top gamesBanner" alt="<%- user.gamesPlay[1].title %> banner"></a>
+                        <div class="card-body">
+                          <h5 class="card-title" style="margin: 0;"><%- user.gamesPlay[1].title %></h5>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <a href="/games/id/<%- user.gamesPlay[2]._id %>"><img src="/assets/gameImages/<%- user.gamesPlay[2].title %>.jpg" class="card-img-top gamesBanner" alt="<%- user.gamesPlay[2].title %> banner"></a>                        
+                        <div class="card-body">
+                          <h5 class="card-title" style="margin: 0;"><%- user.gamesPlay[2].title %></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="row"><h2 class="text-center" style="padding-top:10%;">Favorite Team</h2></div>
+                    <div class="row">
+                        <a href="/teams/id/<%- user.favoriteTeam[0]._id %>"><img id="favPlayerImg" class="img-fluid portrait-image mx-auto d-block" src="/assets/teamImages/<%- user.favoriteTeam[0].teamName %>.jpg" alt="<%-user.favoriteTeam[0].teamName%> Logo"></a>
+                        <a href="/teams/id/<%- user.favoriteTeam[0]._id %>"><h3 class="text-center"><b><%- user.favoriteTeam[0].teamName %></b></h3></a><br>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="row"><h2 class="text-center" style="padding-top:10%;">Favorite Player</h2></div>
+                    <div class="row">
+                        <div class="col-md-auto align-items-center justify-content-center">
+                            <a href="/players/id/<%- user.favoritePlayer[0]._id %>"><img id="favPlayerImg" class="img-fluid portrait-image mx-auto d-block" src="/assets/player_portraits/<%- user.favoritePlayer[0].inGameName %>_portrait.png" alt="Image of <%-user.favoritePlayer[0].inGameName%>"></a>
+                            <a href="/players/id/<%- user.favoritePlayer[0]._id %>"><h3 class="text-center"><b><%- user.favoritePlayer[0].inGameName %></b></h3></a><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('footer') %> 

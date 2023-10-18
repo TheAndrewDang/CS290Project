@@ -1,0 +1,136 @@
+<%- include('header', {title:"StatsGG"}) -%> 
+		<main class="shadow-lg">
+			<div class="row justify-content-center">
+				<div class="col-md-2">
+					<img src="/assets/black.png" class="img-fluid" alt="Logo" />
+				</div>
+				<div class="col-md-5">
+					<h3 style="font-size: 70;"><strong>WELCOME TO STATS.GG</strong></h3>
+					<h5>TRACKING OVER 5 PROS</h5>
+				</div>
+			</div>
+
+			<div class="row justify-content-center" id="indexPanels">
+				<div class="col-md-auto justify-content-center">
+					<a href="valorant.html">
+						<img
+							src="/assets/gameImages/Apex.jpg"
+							class="img-fluid box"
+							alt="Apex Banner
+					image"
+						/>
+					</a>
+				</div>
+				<div class="col-md-auto">
+					<a href="lol.html">
+						<img
+							src="/assets/gameImages/CSGO.jpg"
+							class="img-fluid box"
+							alt="CSGO Banner
+					image"
+						/>
+					</a>
+				</div>
+				<div class="col-md-auto">
+					<a href="apex.html">
+						<img
+							src="/assets/gameImages/League of Legends.jpg"
+							class="img-fluid box"
+							alt="League of Legends Banner
+					image"
+						/>
+					</a>
+				</div>
+				<div class="col-md-auto">
+					<a href="csgo.html">
+						<img
+							src="/assets/gameImages/Valorant.jpg"
+							class="img-fluid box"
+							alt="Valorant Banner
+					image"
+						/>
+					</a>
+				</div>
+			</div>
+
+			<div class="row justify-content-center">
+				<div class="row">
+					<hr>
+					<p class="text-center" style="padding: 1vw;">Hmm, it seems you've been here <%- timesVisited %> times. Perhaps you should <a href="/users/create">create an account?</a></p>
+					<hr style="margin-bottom: 2vw;">
+				</div>
+
+				<div class="col-md-8">
+					<ul style="list-style-type:none;"> 
+						<h1>News and Videos</h1>
+						<li>
+							<div class="row newsRow">
+								<br>
+								<div class="col-md-7">
+									<div class="iframe-container">
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/oshvcDjEKZc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
+								</div>
+								<div class="col-md-5">
+									<h6 class="newsType">Video</h6>
+									<a href="https://www.youtube.com/watch?v=oshvcDjEKZc"><h3 style="color: black;"><strong>Apex Legends Season 9</strong></h3></a>
+									<p class="newsDesc">There’s nowhere to hide this season, Legends. Ready to find out if you’re predator or prey? Discover your true nature when Apex Legends – Legacy launches May 4!</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row newsRow">
+								<div class="col-md-7">
+									<a href="https://lolesports.com/article/lcs-pro-view-returns-for-summer-split/blt066929fb1049477a"><img class="img-fluid" src="/assets/thumbArticle.png" alt="Article image"/></a>
+								</div>
+								<div class="col-md-5">
+									<h6>Article</h6>
+									<a href="https://lolesports.com/article/lcs-pro-view-returns-for-summer-split/blt066929fb1049477a"><h3 style="color: black;"><strong>LCS Pro View Returns for Summer Split</strong></h3></a>
+									<p class="newsDesc">We’re re-launching the popular platform for free, plus a paid premium option After a brief hiatus, we’re proud to announce the return of Pro View for the LCS Summer Split. During the break, our development team has rebuilt the platform from the ground up to deliver an upgraded viewing experience for our community and both a free and paid version. The new Pro View will offer the following features entirely for free:</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+	
+				<div class="col-md-4">
+					<h1>Recently viewed</h1>
+					<ul>
+						<li>TEMP</li>
+						<li>TEMP</li>
+						<li>TEMP</li>
+						<li>TEMP</li>
+					</ul>
+					<br>
+					<div class="iframe-container" id="discord">
+						<iframe src="https://discord.com/widget?id=378616297703079937&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+					</div>
+				</div>
+			</div>
+		</main>
+<%- include('footer') -%> 
+
+<script>
+    console.log("Raw cookies:", document.cookie);
+    let cookieMap = getCookieDictionary( );
+    console.log("Cookies as map:", cookieMap);
+
+    function getCookieDictionary() {
+      let cookieArray = document.cookie.split('; ');
+      let cookieMap = {};
+      for(let c of cookieArray) {
+        let cParts = c.split("=");
+        //If only one part, must be something
+        if(cParts.length > 1)
+          cookieMap[cParts[0]] = cParts[1];
+      }
+      return cookieMap;
+    }
+
+    function upVisitCount(){
+        cookieMap["visitCount"]++;
+        document.cookie = "visitCount=" + cookieMap["visitCount"];
+    }
+
+    upVisitCount();
+  </script>

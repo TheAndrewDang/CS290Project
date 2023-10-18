@@ -1,0 +1,26 @@
+<%- include("header.ejs",  {title: "Game Page", dataType:"game"}) %>
+
+<main>
+    <h1 class="text-center"><b>Game Page</b></h1>
+    
+    <div class="container">
+    <div class="row">
+    <% for (let data of gameList) { %>
+        <div class="col-sm">
+            <div class="card mxy-3">
+                <div class="card-header text-center"><%- data.title%></div>
+                <a href="<%-data.url%>"><img class="card-img-bottom" width="288" height="510"
+                    src="/assets/gameImages/<%-data.img%>"></a>
+                </div>
+            </div>
+        <% } %>
+        </div>
+    </div>
+
+    <div class="container my-3">
+        <div class="text-center">
+            <a href="/games/create/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create a Game</a>
+        </div>
+    </div>
+</main>
+<%- include("footer.ejs") %>

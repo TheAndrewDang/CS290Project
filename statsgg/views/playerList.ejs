@@ -1,0 +1,50 @@
+<%- include("header.ejs", {title:"All Players", dataType:"player"}) %>
+<link rel="stylesheet" href="/stylesheets/player.css"/>
+
+<main>
+    <h1 id="main-page-header">PLAYERS</h1>
+
+    <div id="background-container">
+
+        <div id="controls">
+            <div class="text-center">
+                <a class="btn btn-primary" href="/players/create/"> <strong>Add a Player</strong> </a>
+            </div>
+        </div>
+
+        
+        <% for (let curGame of games) { %>
+            <div class="row" id="<%- curGame.title %>">
+                <h2 class="game-name-row-header"> <%- curGame.title %> </h2>
+                    <% for (let curPlayer of playerList) { %> 
+                        <% if (curPlayer.playerPlaysGame(curGame)) { %>
+                            
+                            <div class="player-card col-lg-3 col-md-6 col-sm-12">
+                                <a href="<%- curPlayer.url %>">
+                                    <h3 class="player-name"> <%- curPlayer.inGameName %> </h3>
+                                    <figure>
+                                        <picture class="img-fluid portrait-image">
+                                            <source class="img-fluid portrait-image" id="playerImage<%- curPlayer.inGameName %>" srcset="/assets/player_portraits/<%- curPlayer.image %>" type="image/png">
+                                            <img src="/assets/player_portraits/default_portrait.png"
+                                                class="img-fluid portrait-image"
+                                                alt="Headshot of <%- curPlayer.inGameName %>" 
+                                                title="Headshot of <%- curPlayer.inGameName %>"
+                                                onerror="this.onerror=null; document.getElementById('playerImage<%- curPlayer.inGameName %>').srcset=this.src;">
+                                        </picture>
+                                    <figcaption></figcaption>
+                                    </figure>
+                                </a>
+                            </div>
+                        <% } %>
+                    <% } %>
+            </div>
+        <% } %>
+    </div>
+
+    <a href="/">Back to Home</a>
+</main>
+
+<%- include("footer.ejs") %>
+</body>
+
+</html>

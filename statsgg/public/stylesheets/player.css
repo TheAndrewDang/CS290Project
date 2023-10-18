@@ -1,0 +1,78 @@
+#main-page-header {
+    text-align: center;
+    font-weight: bolder;
+}
+
+#background-container {
+    align-content: center;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.text-center {
+    padding-bottom: 1rem;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+}
+
+.game-name-row-header {
+    margin: 1rem;
+    margin-left: 0;
+}
+
+.player-card {
+    align-self: center;
+    text-align: left;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 1rem;
+    background-color: rgb(250, 102, 102);
+}
+
+.player-card a {
+    color: black;
+}
+
+.player-name {
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+}
+
+figure {
+    margin-bottom: 0;
+}
+
+.portrait-image {
+    background-color: #aaaaaa;
+    width: 100%;
+    height: auto;
+}
+
+.player-stats {
+    background-color: #e4e3e3;
+    padding: 0.5rem;
+}
+
+.player-stats a {
+    color: rgb(62, 130, 231)
+}
+
+#controls {
+    align-self: center;
+    width: 100%;
+}
+
+#submit-form {
+    margin-top: 1rem;
+}
+
+#topBtn {
+    margin: 0.5rem;
+}

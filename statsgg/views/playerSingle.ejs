@@ -1,0 +1,82 @@
+<%- include("header.ejs", {title: player.getFullName, dataType:"player"}) %>
+<link rel="stylesheet" href="/stylesheets/player.css"/>
+
+<main>
+    <h1 class="player-name"><%- player.getConjoinedName %></h1>
+    <hr>
+
+    <div id="background-container">
+        
+        <div class="row" id="league-of-legends">
+
+            <div id="controls">
+                <div class="text-center">
+                    <a class="btn btn-danger" href="/players/delete/<%- player._id %>"> <strong>Delete Record</strong> </a>
+
+                    <a class="btn btn-warning" href="/players/update/<%- player._id %>"> <strong>Update Record</strong> </a>
+                </div>
+            </div>
+            
+            <div class="text-center">
+            <div class="player-card col-lg-3 col-md-6 col-sm-12">
+                <h3 class="player-name"><%- player.inGameName %></h3>
+                <picture class="img-fluid portrait-image">
+                    <source class="img-fluid portrait-image" id="playerImage" srcset="/assets/player_portraits/<%- player.image %>" type="image/png">
+                    <img src="/assets/player_portraits/default_portrait.png"
+                        class="img-fluid portrait-image"
+                        alt="no image found for <%- player.inGameName %>" 
+                        title="no image found for <%- player.inGameName %>"
+                        onerror="this.onerror=null; document.getElementById('playerImage').srcset=this.src;">
+                </picture>
+
+                <div class="player-stats">
+                    <% if (player.team) { console.log("from playerSingle.ejs- player.team: " + player.team);%>
+                    <strong>Team:</strong> <a href="/teams/id/<%- player.team[0]._id %>"><%- player.team[0].teamName %></a> <br>
+                    <% } %>
+
+                    <% if (player.game) { console.log("from playerSingle.ejs- player.game: " + player.game);%>
+                    <strong>Game:</strong> <a href="/games/id/<%- player.game[0]._id %>"><%- player.game[0].title %></a> <br>
+                    <% } %>
+
+                    <strong>KDA:</strong> <%- player.KDA %> <br>
+
+                    <strong>Earnings: </strong>$<%- player.earnings %> <br>
+
+                    <strong>Number of Games Played:</strong> <%- player.numGamesPlayed %> <br> 
+
+                    <% if (player.followedUsers) { console.log("from playerSingle.ejs- player.followedUsers: " + player.followedUsers); %>
+                    <strong>Followers:</strong>  
+                        <ul>
+                        <% for (let curUser of player.followedUsers) { %> 
+                            <li> <a href="/users/id/<%- curUser._id %>"><%- curUser.userName %></a> </li>
+                        <% } %>
+                        </ul>
+                    <% } %>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="btn btn-secondary" href="/players/">Back to All</a>
+</main>
+
+</body>
+
+</html>
+
+<script>
+    let image_url = document.getElementsById("image").src;
+    console.log(document.getElementsById("image"));
+    function imageExists(image_url) {
+        var http = new XMLHttpRequest();
+
+        http.open('HEAD', image_url, false);
+        http.send();
+
+        console.log(http.status != 404);
+    }
+    
+    
+    imageExists();
+</script>
